@@ -44,11 +44,13 @@ public class DriveByVision extends CommandBase {
     NetworkTable table = inst.getTable("DriveByVision");
     NetworkTableEntry forward_speed = table.getEntry("Forward Speed");
     NetworkTableEntry leftright_turn = table.getEntry("Left-Right");
+    NetworkTableEntry quickturn = table.getEntry("QuickTurn");
 
     double f = forward_speed.getDouble(0.0);
     double lr = leftright_turn.getDouble(0.0);
+    boolean qt = quickturn.getBoolean(true);
 
-    chassis.DBV(f, lr);
+    chassis.DBV(f, lr, qt);
 
   }
 
@@ -59,6 +61,10 @@ public class DriveByVision extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    NetworkTable table = inst.getTable("DriveByVision");
+    NetworkTableEntry stop = table.getEntry("Stop");
+    boolean s = stop.getBoolean(false);
+    return s;
   }
 }

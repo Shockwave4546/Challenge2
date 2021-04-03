@@ -45,6 +45,7 @@ public class RobotContainer {
     SmartDashboard.putString("Hello", "Hello from ROMI");
     //SmartDashboard.putData("L30-Turn", new Turn(-30.0));
     SmartDashboard.putData("Drive By Vision", new DriveByVision());
+    SmartDashboard.putData("Drive By Joystick", new DriveByController());
 
     //m_chooser.setDefaultOption("Forward 10in", new Forward(10.0));
     //m_chooser.addOption("Forward 1in", new Forward(1.0));

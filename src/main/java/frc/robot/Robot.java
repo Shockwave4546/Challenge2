@@ -32,6 +32,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    // Cancels all running commands at the start of test mode.
+    CommandScheduler.getInstance().cancelAll();
+
     // Setup a test msg via the Network Table
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("DriveByVision");
@@ -74,7 +77,11 @@ public class Robot extends TimedRobot {
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    // Cancels all running commands at the start of test mode.
+    CommandScheduler.getInstance().cancelAll();
+
+  }
 
   @Override
   public void disabledPeriodic() {}
@@ -104,7 +111,7 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
     // Allow Drive By Controller only in TeleOp mode
-    m_robotContainer.gTeleOpOnly().schedule();
+    // m_robotContainer.gTeleOpOnly().schedule();
     
   }
 

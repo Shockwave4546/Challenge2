@@ -122,8 +122,10 @@ public class ROMIChassis extends SubsystemBase {
     diffDrive.arcadeDrive(-0.85 * xboxControl.getRawAxis(1), 0.85 * xboxControl.getRawAxis(4));
   }
 
-  public void DBV(double f, double lr) {
-    diffDrive.arcadeDrive(f, lr);
+  public void DBV(double f, double lr, boolean qt) {
+    // diffDrive.arcadeDrive(f, lr);
+    // Try switching to using curvatureDrive with QuickTurn
+    diffDrive.curvatureDrive(f, lr, qt);
   }
 
   public void motorSpeed(double lmotor_speed, double rmotor_speed) {
