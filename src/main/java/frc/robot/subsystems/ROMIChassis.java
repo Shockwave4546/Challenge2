@@ -119,7 +119,7 @@ public class ROMIChassis extends SubsystemBase {
     // remember, axis on the controller are inverted - pull back = 1, push forward = -1
     // going to use the Left Stick for Forward/Backward only (this will remove the noise from left/right) and
     // use the Right Stick for Left/Right turn only (this will remove those noise from the up/down)
-    diffDrive.arcadeDrive(-0.85 * xboxControl.getRawAxis(1), 0.85 * xboxControl.getRawAxis(4));
+    diffDrive.curvatureDrive(-0.6 * xboxControl.getRawAxis(1), 0.6 * xboxControl.getRawAxis(4), true);
   }
 
   public void DBV(double f, double lr, boolean qt) {
